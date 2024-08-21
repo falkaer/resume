@@ -6,10 +6,7 @@
 #let job_color = rgb("#737373")
 #let dateformat = "[month]/[year]"
 
-#let setup(
-  author: "",
-  body
-) = {
+#let setup(author: "", body) = {
   set document(author: author, title: "Resume")
   set page(
     paper: "a4",
@@ -23,17 +20,17 @@
     margin: 1.25cm,
   )
   set text(
-    font: ("Latin Modern Sans", "Inria Sans"), 
+    font: ("Latin Modern Sans", "Inria Sans"),
     hyphenate: false,
-    lang: "en", 
-    fallback: true
+    lang: "en",
+    fallback: true,
   )
 
   show math.equation: set text(weight: 400)
 
   set list(marker: box(circle(radius: 0.2em, stroke: heading_color), inset: (top: 0.2em)))
   set enum(numbering: (n) => text(fill: heading_color, [#n.]))
-  
+
   show heading.where(level: 1): element => [
     #text(element.body, fill: heading_color, weight: 400)
   ]
@@ -55,12 +52,12 @@
     {
       heading([#subject,], level: 2)
       text(location, weight: 400, style: "italic")
-    },
-    align(right,
+    }, align(
+      right,
       [
-        #from.display(dateformat) -- #if to == none [Present] else {to.display(dateformat)}
-      ]
-    )
+        #from.display(dateformat) -- #if to == none [Present] else { to.display(dateformat) }
+      ],
+    ),
   )
 }
 
@@ -79,4 +76,3 @@
     #text(desc)
   ]
 }
-
